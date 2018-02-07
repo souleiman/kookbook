@@ -1,0 +1,40 @@
+buildscript {
+    ext.kotlin_version = '1.2.21'
+    ext.spring_boot_version = '1.5.9.RELEASE'
+
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath group: 'org.jetbrains.kotlin', name: 'kotlin-gradle-plugin', version: "$kotlin_version"
+        classpath group: 'org.springframework.boot', name: 'spring-boot-gradle-plugin', version: "$spring_boot_version"
+    }
+}
+
+group 'io.kotlin.cooking'
+version '1.0'
+
+apply plugin: 'java'
+apply plugin: 'kotlin'
+apply plugin: 'org.springframework.boot'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib-jdk8', version: "$kotlin_version"
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: "$spring_boot_version"
+    implementation group: 'com.google.code.gson', name: 'gson', version: '2.8.2'
+
+    testImplementation group: 'junit', name: 'junit', version: '4.12'
+}
+
+compileKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+}
+compileTestKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+}
